@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DetailList from './DetailList';
+import Users from './Users';
 
 
 class Welcome extends Component {
@@ -39,7 +40,11 @@ class Welcome extends Component {
                     </div>
                     <br></br>
                     <input type="submit" className="btn btn-primary bid-submit-btn-1" value="Submit" />
-
+                    <p>
+                      OR
+                    </p>
+                    <h4>See bids</h4>
+                    {/* Link with Users.js call class Users */}
                   </form>
                   
               </div>
@@ -52,6 +57,7 @@ class Welcome extends Component {
              {this.props.details.length !== 0 && 
              <DetailList data={this.props.details}  userName={userName} />
            }
+           {/* Change Detailist with Users to chk changes */}
           </div>
         </div>                
                 </div>

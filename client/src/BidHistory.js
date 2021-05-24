@@ -16,7 +16,7 @@ class BidHistory extends Component {
                    </ul>
       			</div>
           		
-	 		);
+	 	);
 	 }
 	
 

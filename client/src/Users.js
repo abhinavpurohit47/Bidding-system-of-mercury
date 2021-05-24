@@ -5,7 +5,7 @@ import BidHistory from './BidHistory';
 const io = require('socket.io-client');
 const socket = io();
 
-class DetailList extends Component {
+class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {bidHistory:[],timeRemain:0} 
@@ -51,7 +51,7 @@ class DetailList extends Component {
                               .reduce((obj, key)=>({...obj, [key]: self.bidHistoryObj[key]}), {});
        }      
       return (
-        <Details
+        <Usser
           breed={details.breed}
           key = {details.id} 
           id ={details.id}
@@ -64,7 +64,7 @@ class DetailList extends Component {
 
         >
          
-        </Details>
+        </Usser>
       );
     });
     return (
@@ -80,7 +80,7 @@ class DetailList extends Component {
 }
 
 
-class Details extends Component {
+class Usser extends Component {
   constructor(props) {
     super(props);
     this.state = {bidPrice:'',inputValue:'', showBidInput: true};
@@ -128,20 +128,16 @@ class Details extends Component {
                 {this.props.userName !=='' && 
                   <div>
                     {this.state.showBidInput ?(
-                    <form className="form-inline bid-form" onSubmit={this.handleSubmit}> 
-                      {this.props.timeFromServer >0 &&
-                        <div>
-                          <div className="form-group mx-sm-3" >                  
-                            <input id="inputBid" className="form-control" type="number" placeholder="Your Price" min={this.props.basePrice} value={this.state.inputValue} onChange={this.handleChange} />                  
-                          </div>
-                          <br></br>
-                        <input type="submit" className="btn btn-primary bid-submit-btn" value="Bid" />
+                    <div className = "row bid-history-div justify-content-cent">
+                    {Object.keys(this.props.bidHistory).length > 0 &&
+                      <div>
+                        <h4 className="bid-history-header ">Bid History</h4>
+                        <BidHistory bidHistory={this.props.bidHistory} ></BidHistory>
                       </div>
-                       }
-                    </form>
+                     }
+                  </div>
                     ):(
-                      <input type="button" className="btn btn-primary bid-submit-btn" value="ReBid" onClick={this.reBid.bind(this)}/>
-                      
+                      <h4> No bids yet!</h4>
                     )
                    }
                    
@@ -162,4 +158,4 @@ class Details extends Component {
 
 
 
-export default DetailList;
+export default Users;
