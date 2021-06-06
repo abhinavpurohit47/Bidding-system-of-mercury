@@ -150,7 +150,29 @@ class Details extends Component {
               </div>
             </div>       
           </div>
-          
+          <div>
+                    {this.state.showBidInput ?(
+                    <div className = "row bid-history-div justify-content-cent">
+                   
+                  </div>
+                    ):(
+                      <div className = "row bid-history-div justify-content-cent">
+                    {Object.keys(this.props.bidHistory).length > 0 &&
+                      <div>
+                        <h4 className="bid-history-header ">Bid History</h4>
+                        <BidHistory bidHistory={this.props.bidHistory} ></BidHistory>
+                        <a href="https://mercurychat.herokuapp.com/">
+                        <button className="btn btn-primary bid-submit-btn"> Chat </button>
+
+                        </a>
+
+                      </div>
+                     }
+                  </div>
+                    )
+                   }
+                   
+                  </div>
         </div>
       </div>
       </div>
